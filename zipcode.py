@@ -6,17 +6,16 @@ print("Welcome to the Newaygo County zip code sorter")
 zip_book = {
     "49309": "Bitely",
     "49312": "Brohman",
-    "49337": "Croton",
+    "49337": "Croton and Newaygo",
     "49412": "Fremont",
     "49413": "Fremont",
     "49327": "Grant",
-    "49337": "Newaygo",
     "49349": "White Cloud",
 }
 
 def main():
     contin = "Y"
-    while contin.capitalize() != "N" and contin.capitalize() != "NO":
+    while contin.capitalize() != "N" and contin.capitalize() != "No":
         test_zip(get_zip())
         contin = ask_for_continue()
     print("Thank you for using Newaygo County Zip Code Sorter. Goodbye!")

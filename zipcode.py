@@ -16,7 +16,7 @@ zip_book = {
 
 def main():
     contin = "Y"
-    while contin != "N" and contin != "no"  and contin != "n" and contin != "No" and contin != "nO" and contin != "NO":
+    while contin.capitalize() != "N" and contin.capitalize() != "NO":
         test_zip(get_zip())
         contin = ask_for_continue()
     print("Thank you for using Newaygo County Zip Code Sorter. Goodbye!")

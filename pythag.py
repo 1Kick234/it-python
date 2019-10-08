@@ -9,7 +9,7 @@ def main():
     while yn.upper() != "N" and yn.upper() != "NO":
         run_loop()
         yn = input("Would you like to calculate another triangle (Y/N)? ")
-    print("Thank you for using the Pythagorean Calculator")
+    print("Thank you for using the Pythagorean Calculator!")
 
 
 def run_loop():
@@ -25,13 +25,16 @@ def pythag():
 
 
 def calculate(a, b, c):
-    if a >= c or b >= c:
-        print("A leg can not be longer than the hypotenuse")
-        return
     if a == "" and b != "" and c != "":
+        if float(b) >= float(c):
+            print("A leg can not be longer than the hypotenuse.")
+            return
         calc_leg(float(b), float(c), "a")
         return
     if a != "" and b == "" and c != "":
+        if float(a) >= float(c):
+            print("A leg can not be longer than the hypotenuse.")
+            return
         calc_leg(float(a), float(c), "b")
         return
     if a != "" and b != "" and c == "":

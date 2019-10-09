@@ -27,43 +27,42 @@ def pythag():
 def calculate(a, b, c):
     if a == "" and b != "" and c != "":
         if float(b) >= float(c):
-            print("A leg can not be longer than the hypotenuse.")
+            print("A leg can not be longer than the hypotenuse.") #Makes sure c isn't smaller than a or b
             return
         calc_leg(float(b), float(c), "a")
         return
     if a != "" and b == "" and c != "":
         if float(a) >= float(c):
-            print("A leg can not be longer than the hypotenuse.")
+            print("A leg can not be longer than the hypotenuse.") #Makes sure c isn't smaller than a or b
             return
         calc_leg(float(a), float(c), "b")
         return
     if a != "" and b != "" and c == "":
         calc_hypo(float(a), float(b))
         return
-    print("Your input was not valid.")
+    print("Your input was not valid.") #This happens if there are 0, 2, or 3 blank spots.
 
 
 def calc_leg(leg, hypo, side):
-    ans = sqrt(hypo*hypo-leg*leg)
+    ans = sqrt(hypo*hypo-leg*leg) #Pythag theorem
     if tripple_test(leg, hypo, ans) == 1:
         print("Congratulations, you have yourself a Pythagorean Tripple!", end=" ")
     print(f"The length of {side} is {ans}.\n")
 
 
 def calc_hypo(leg1, leg2):
-    ans = sqrt(leg1*leg1+leg2*leg2)
+    ans = sqrt(leg1*leg1+leg2*leg2) #Pythag theorem
     if tripple_test(leg1, leg2, ans) == 1:
         print("Congratulations, you have yourself a Pythagorean Tripple!", end=" ")
     print (f"The length of the c is {ans}.\n")
 
 
 def tripple_test(a, b, c):
-    if (a+b+c) % 1 == 0:
+    if (a+b+c) % 1 == 0: #If there's no remainder, it's a tripple.
         return 1
 
 
 main()
-
 
 
 

@@ -1,31 +1,26 @@
-from banner import banner
-banner("Deep Thoughts", "Gavin Orcutt")
+import os
 
-def main():
-    run_event_loop()
+def load(name):
+    data = []
+    filename = get_full_pathname(name)
 
-def run_event_loop():
-    print("What do you want to do with your journal?")
-    command = "J"
-    journal_data = []
+    if os.path.exists(filename):
+        with open(filename, "r") as fin:
+            for entry in fin.readlines():
+                data.append(entry.rstrip())
 
-    while command.upper() != "E":
-        command = input("[L]ist entries, [A]dd an entry, [E]xit: ")
+    return data
 
-        if command.upper() == "L":
-            list_entries(journal_data)
-        elif command.upper() == "A":
-            add_entry(journal_data)
-        elif command.upper() != "E":
-            print("Input not recognized.")
+def save(name, data):
+    filename = get_full_pathname(name)
+    print(f"..... saving to {filename}")
+    with open(filename, "w") as fout:
+        for entry in data:
+            fout.write(entry+"\n")
 
-def list_entries(data):
-    print("Your journal entries:")
-    for number, entry in enumerate(data):
-        print(f"{number+1}. {entry}")
+def add_entry(text, data):
+    data.append(text)
 
-def add_entry(data):
-    entry = input("Type your entry, <ENTER> to exist: ")
-    data.append(entry)
-
-main()
+def get_full_pathname(name):
+    filename = os.path.abspath(os.path.join(".", "journals", f"{name}.jrn"))
+    return filename
